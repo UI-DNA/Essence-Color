@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在浏览器测试一下</title>
+    <script src="./../dist/EssenceColor.umd.js"></script>
+    <script>
+
+        function f()
+        {
+
+            var i =100000
+            while (i>0)
+            {
+                i--
+                console.log(i)
+                a = new EssenceColor({r:12,g:222,b:125})
+                a.getHSL()
+            }
+            alert("done")
+        }
+    </script>
+    <style>
+        body{
+            padding: 100px;
+            text-align: center;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+        <div onclick="f()">引入了 /dist/EssenceColor.bundle-web.js </div>
+        (0_0) 打开控制台调试吧
+
+</body>
+</html>

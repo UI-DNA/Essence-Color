@@ -1,0 +1,102 @@
+{
+  "name": "essence-color",
+  "fullName": "EssenceColor",
+  "version": "0.0.0",
+  "description": "create your js lib from zero.",
+  "main": "dist/EssenceColor.cjs.js",
+  "module": "dist/EssenceColor.es.js",
+  "browser": "dist/EssenceColor.umd.js",
+  "types": "typings/index.d.ts",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "build-all": "rmdir-cli dist && rmdir-cli temp  && npm run build && npm run build-bundle",
+    "build-ts": "tsc src/index.ts -d -m commonjs --outDir dist/ts ",
+    "build-bundle": "webpack --verbose --mode=production",
+    "build-and-publish": "npm run build-all && npm run doc && npm run publish",
+    "doc": "jsdoc2md dist/EssenceColor.es.js > doc/EssenceColor.md && type README-HEAD.MD > README.MD && type doc\\EssenceColor.md >> README.MD",
+    "test": "jest",
+    "test-coverage": "jest --coverage",
+    "test-coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "publish": "npm publish --registry=https://registry.npmjs.org/ --disturl=/",
+    "zero-init": "node ./.zero/zero-init.js"
+  },
+  "author": "nullice",
+  "license": "MIT",
+  "repository": "",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.55",
+    "@babel/runtime": "^7.0.0-beta.55",
+    "color": "^3.0.0",
+    "lodash.memoize": "^4.1.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.55",
+    "@babel/core": "^7.0.0-beta.55",
+    "@babel/plugin-external-helpers": "^7.0.0-beta.55",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.55",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.55",
+    "@babel/preset-env": "^7.0.0-beta.55",
+    "@types/jest": "^23.3.1",
+    "@types/node": "^10.5.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^7.1.5",
+    "benchmark": "^2.1.4",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.2.0",
+    "jest": "^23.4.2",
+    "mustache": "^2.3.0",
+    "rmdir-cli": "^2.0.6",
+    "rollup": "^0.63.5",
+    "rollup-plugin-babel": "^4.0.0-beta.7",
+    "rollup-plugin-commonjs": "^9.1.4",
+    "rollup-plugin-cpy": "^1.0.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rollup-plugin-typescript2": "^0.16.1",
+    "rollup-plugin-uglify": "^4.0.0",
+    "ts-jest": "^23.0.1",
+    "ts-loader": "^4.4.2",
+    "typescript": "^3.0.1",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0"
+  },
+  "jest": {
+    "testURL": "http://localhost/",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.jsx$": "babel-jest",
+      "^.+\\.js$": "babel-jest"
+    },
+    "verbose": true,
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleNameMapper": {
+      "@/(.*)": "<rootDir>/src/$1"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "files": [
+    "dist",
+    "doc",
+    "LICENSE.md",
+    "README.md",
+    "typings"
+  ]
+}

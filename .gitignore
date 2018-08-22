@@ -1,0 +1,14 @@
+
+node_modules
+.idea
+coverage
+dist
+temp
+
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+*.map
+src/**.js
+src/**/*.js
