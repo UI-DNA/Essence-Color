@@ -24,6 +24,12 @@ export interface objectHSL {
     s: number;
     l: number;
 }
+export interface objectHSV {
+    h: number;
+    s: number;
+    v: number;
+    b: number;
+}
 export interface objectLab {
     L: number;
     a: number;

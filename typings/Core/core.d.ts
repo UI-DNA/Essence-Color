@@ -15,6 +15,7 @@ declare class EssenceColor {
     a?: number;
     s?: number;
     h?: number;
+    v?: number;
     alpha?: number;
     constructor(input: any);
     /**
@@ -43,6 +44,7 @@ declare class EssenceColor {
     getHSL(): EssenceColor;
     getRGB(): EssenceColor;
     getLab(): EssenceColor;
+    getHSV(): EssenceColor;
     static ESSENCE_COLOR: number;
 }
 export default EssenceColor;

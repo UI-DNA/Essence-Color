@@ -3,9 +3,9 @@ import ColorModel from "./ColorModels/ColorModel";
 import ColorModel_RGB from "./ColorModels/ColorModel.RGB";
 import ColorModel_HSL from "@/Core/ColorModels/ColorModel.HSL";
 import ColorModel_Lab from "@/Core/ColorModels/ColorModel.Lab";
-import util from "@/Core/util";
 import ColorSpace_sRGB from "@/Core/ColorSpace/ColorSpace.sRGB";
 import RGB_to_HSL from "@/Core/Converters/RGB_to_HSL";
+import ColorModel_HSV from "@/Core/ColorModels/ColorModel.HSV";
 
 
 /**
@@ -28,6 +28,7 @@ class EssenceColor
     public a?: number;
     public s?: number;
     public h?: number;
+    public v?: number;
     public alpha?: number;
 
     constructor(input: any)
@@ -243,6 +244,11 @@ class EssenceColor
         return color
     }
 
+    public getHSV(): EssenceColor
+    {
+        let color = this._getColorByModel(ColorModel_HSV);
+        return color
+    }
 
     static ESSENCE_COLOR = 1
 }

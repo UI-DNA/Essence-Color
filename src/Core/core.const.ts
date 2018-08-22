@@ -39,6 +39,17 @@ export interface objectHSL
     l: number,
 }
 
+
+export interface objectHSV
+{
+    h: number,
+    s: number,
+    v: number,
+    b: number,
+}
+
+
+
 export interface objectLab
 {
     L: number,

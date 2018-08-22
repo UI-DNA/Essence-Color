@@ -6,7 +6,10 @@
 interface ColorModel {
 
     // 1. 决定此色彩模型的色彩属性：
+
+    // 输出包含此色彩模型色彩属性的对象
     outputColor: (color: any) => any
+    // 从输入的对象中提取此色彩模型需要的属性
     inputColor: (color: any, input: any) => any
 
 
