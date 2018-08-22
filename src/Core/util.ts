@@ -23,10 +23,9 @@ const util = {
      */
     normaliz(inNumber: number, inMin?: number, inMax?: number, newMax?: number)
     {
-
-
         let newNumber;
-        if (!!inMin && !!inMax && !! newMax)
+
+        if (inMin != undefined &&  inMax != undefined &&  newMax != undefined)
         {
             newNumber = (inNumber - inMin) / (inMax - inMin);
             newNumber = newNumber * newMax;
