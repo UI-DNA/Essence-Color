@@ -24,7 +24,6 @@ describe("color", () => {
     test("HSL => RGB ", () => {
 
         let color = new EssenceColor({r: 110, g: 212, b: 33})
-        let colorHSL = color.getHSL()
         let colorRGB = color.getRGB()
         expect(colorRGB.r).toBe(110)
         expect(colorRGB.g).toBe(212)
@@ -36,10 +35,9 @@ describe("color", () => {
     test("sRGB => Lab ", () => {
 
         let color = new EssenceColor({r: 110, g: 212, b: 33})
-        let colorHSL = color.getHSL()
-        let colorRGB = color.getRGB()
-        expect(colorRGB.r).toBe(110)
-        expect(colorRGB.g).toBe(212)
-        expect(colorRGB.b).toBe(33)
+        let colorLab = color.getLab()
+        expect(Math.round(<number>colorLab.L)).toBe(77)
+        expect(Math.round(<number>colorLab.a)).toBe(-51)
+        expect(Math.round(<number>colorLab.b)).toBe(69)
     })
 })
