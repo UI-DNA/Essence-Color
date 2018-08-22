@@ -10,6 +10,12 @@ declare const util: {
      * @returns {number}
      */
     normaliz(inNumber: number, inMin?: number | undefined, inMax?: number | undefined, newMax?: number | undefined): number;
+    /**
+     * 把一个数按 [0,255] 整数，规则化
+     * @param value
+     * @return {number}
+     */
+    normalInt256(value: number): number;
     matrixMultiply_33x33(matA: number[], matB: number[]): number[];
     matrixMultiply_33x30(matA: number[], matB: number[]): number[];
     matrixInverse_33(mat: number[]): number[];

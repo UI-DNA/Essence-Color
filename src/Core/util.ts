@@ -26,7 +26,7 @@ const util = {
 
 
         let newNumber;
-        if (inMin && inMax && newMax)
+        if (!!inMin && !!inMax && !! newMax)
         {
             newNumber = (inNumber - inMin) / (inMax - inMin);
             newNumber = newNumber * newMax;
@@ -39,10 +39,24 @@ const util = {
     },
 
 
+    /**
+     * 把一个数按 [0,255] 整数，规则化
+     * @param value
+     * @return {number}
+     */
+    normalInt256(value: number)
+    {
+        let re = Math.round(value)
+        if (re > 255) return 255
+        if (re < 0) return 0
+        return re
+    },
+
+
     matrixMultiply_33x33(matA: number[], matB: number[]): number[]
     {
 
-        let out =  [];
+        let out = [];
 
         out[0] = matA[0] * matB[0] + matA[1] * matB[3] + matA[2] * matB[6];
         out[1] = matA[0] * matB[1] + matA[1] * matB[4] + matA[2] * matB[7];
@@ -75,10 +89,10 @@ const util = {
     },
 
 
-    matrixInverse_33(mat: number[]):number[]
+    matrixInverse_33(mat: number[]): number[]
     {
 
-        let out  = [];
+        let out = [];
         let n11 = mat[0], n21 = mat[1], n31 = mat[2],
             n12 = mat[3], n22 = mat[4], n32 = mat[5],
             n13 = mat[6], n23 = mat[7], n33 = mat[8],
