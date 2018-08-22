@@ -1,7 +1,6 @@
 import ColorModel from "@/Core/ColorModels/ColorModel";
-import {ALIAS, objectRGB} from "@/Core/core.const";
-import util from "@/Core/util";
-import {default as xxx} from "@/Core/util";
+import {objectRGB} from "@/Core/core.const";
+
 
 let ColorModel_RGB: ColorModel = {
 
@@ -28,9 +27,9 @@ let ColorModel_RGB: ColorModel = {
     },
 
     fromRGB(color: any, rgb: any) {
-        color.r = rgb.r;
-        color.g = rgb.g;
-        color.b = rgb.g
+        color.r = rgb.r
+        color.g = rgb.g
+        color.b = rgb.b
     },
 
     toJSON() {
