@@ -85,5 +85,15 @@ describe("HSV", () =>
         expect(colorHSV.v).toBe(85)
     })
 
+    test("HSV => sRGB", () =>
+    {
+        let color = new EssenceColor({h: 289, s: 55, v: 84})
+        let colorRGB = color.getRGB()
+        expect(colorRGB.r).toBe(193)
+        expect(colorRGB.g).toBe(96)
+        expect(colorRGB.b).toBe(214)
+    })
+
+
 })
 

@@ -71,9 +71,9 @@ function HSV_to_RGB(hsv: objectHSV, out?: any): objectRGB
         }
     }
 
-    out.r = util.normalInt256(<number>r)
-    out.g = util.normalInt256(<number>g)
-    out.b = util.normalInt256(<number>b)
+    out.r = util.normalInt256(<number>r * 255)
+    out.g = util.normalInt256(<number>g * 255)
+    out.b = util.normalInt256(<number>b * 255)
     return out
 }
 
