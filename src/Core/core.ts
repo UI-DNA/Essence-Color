@@ -8,6 +8,14 @@ import RGB_to_HSL from "@/Core/Converters/RGB_to_HSL";
 import ColorModel_HSV from "@/Core/ColorModels/ColorModel.HSV";
 
 
+let ColorModeles = {
+    HSV: ColorModel_HSV,
+    HSL: ColorModel_HSL,
+    RGB: ColorModel_RGB,
+    Lab: ColorModel_Lab,
+}
+
+
 /**
  * 色彩表示与存储类
  */
@@ -17,7 +25,10 @@ class EssenceColor
     public colorSpace?: ColorModel;
 
     // 静态色彩转换方法
-    static RGB_to_HSL = RGB_to_HSL;
+    static DirectConverters = {RGB_to_HSL}
+
+    // 支持的色彩模型列表
+    static ColorModeleList = [ColorModel_RGB, ColorModel_HSL, ColorModel_HSV, ColorModel_Lab]
 
 
     public r?: number;
@@ -46,33 +57,19 @@ class EssenceColor
             }
             else
             {
-                // 按 RGB 色彩模型处理
-                if (input.r && input.g && input.b)
+                // 在支持的色彩模型列表里，找到合适的并输入颜色
+                let len = EssenceColor.ColorModeleList.length
+                for (let i = 0; i < len; i++)
                 {
-                    this.r = input.r;
-                    this.g = input.g;
-                    this.b = input.b;
-                    this.colorModel = ColorModel_RGB;
-                    return
+                    let modele = EssenceColor.ColorModeleList[i]
+                    if (modele.isMatchedColor(input))
+                    {
+                        modele.inputColor(this, input)
+                        this.colorModel = modele;
+                        break
+                    }
                 }
-                // 按 HSL 色彩模型处理
-                else if (input.h && input.l && input.s)
-                {
-                    this.h = input.h;
-                    this.l = input.l;
-                    this.s = input.s;
-                    this.colorModel = ColorModel_HSL;
-                    return
-                }
-                // 按 Lab 色彩模型处理
-                else if (input.L && input.a && input.b)
-                {
-                    this.L = input.L;
-                    this.a = input.a;
-                    this.b = input.b;
-                    this.colorModel = ColorModel_Lab;
-                    return
-                }
+
             }
         }
         else if (Array.isArray(input))

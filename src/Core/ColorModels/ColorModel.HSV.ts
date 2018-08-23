@@ -21,6 +21,14 @@ let ColorModel_HSV: ColorModel = {
         }
     },
 
+    isMatchedColor(input: any)
+    {
+        if (input.h == undefined) return false
+        if (input.s == undefined) return false
+        if (input.v == undefined && input.b == undefined) return false
+        return true
+    },
+
     toRGB(color: any): objectRGB
     {
         return HSV_to_RGB(color)

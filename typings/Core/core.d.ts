@@ -6,7 +6,10 @@ import RGB_to_HSL from "@/Core/Converters/RGB_to_HSL";
 declare class EssenceColor {
     colorModel?: ColorModel;
     colorSpace?: ColorModel;
-    static RGB_to_HSL: typeof RGB_to_HSL;
+    static DirectConverters: {
+        RGB_to_HSL: typeof RGB_to_HSL;
+    };
+    static ColorModeleList: ColorModel[];
     r?: number;
     g?: number;
     b?: number;

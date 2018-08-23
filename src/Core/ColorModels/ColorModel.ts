@@ -3,7 +3,8 @@
  *      1. 有哪些属性
  *      2. 如何与 RGB 色彩模型互相转换
  */
-interface ColorModel {
+interface ColorModel
+{
 
     // 1. 决定此色彩模型的色彩属性：
 
@@ -11,6 +12,8 @@ interface ColorModel {
     outputColor: (color: any) => any
     // 从输入的对象中提取此色彩模型需要的属性
     inputColor: (color: any, input: any) => any
+    // 输入的对象是匹配此色彩模型的对象
+    isMatchedColor: (input: any) => boolean
 
 
     // 2.决定此色彩模型到 RGB 的转换方法：

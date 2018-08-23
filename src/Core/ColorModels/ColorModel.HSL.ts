@@ -7,13 +7,15 @@ import RGB_to_HSL from "@/Core/Converters/RGB_to_HSL";
 
 
 let ColorModel_HSL: ColorModel = {
-    inputColor(color: any, input: any) {
+    inputColor(color: any, input: any)
+    {
         color.h = input.h;
         color.s = input.s;
         color.l = input.l
     },
 
-    outputColor(color: any) {
+    outputColor(color: any)
+    {
         return {
             h: color.h,
             s: color.s,
@@ -21,18 +23,31 @@ let ColorModel_HSL: ColorModel = {
         }
     },
 
-    toRGB(color: any): objectRGB {
+    isMatchedColor(input: any)
+    {
+        if (input.h == undefined) return false
+        if (input.s == undefined) return false
+        if (input.l == undefined) return false
+        return true
+    },
+
+
+    toRGB(color: any): objectRGB
+    {
         return HSL_to_RGB(color)
     },
 
-    fromRGB(color: any, rgb: any) {
+    fromRGB(color: any, rgb: any)
+    {
         RGB_to_HSL(rgb, color)
     },
 
-    toJSON() {
+    toJSON()
+    {
         return "HSL"
     },
-    toString() {
+    toString()
+    {
         return "HSL"
     }
 };

@@ -22,6 +22,14 @@ let ColorModel_Lab: ColorModel = {
         }
     },
 
+    isMatchedColor(input: any)
+    {
+        if (input.L == undefined) return false
+        if (input.a == undefined) return false
+        if (input.b == undefined) return false
+        return true
+    },
+
     toRGB(color: any): objectRGB {
         return Lab_to_RGB(color)
     },
