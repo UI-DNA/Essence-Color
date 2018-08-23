@@ -48,6 +48,12 @@ export interface objectHSV
     b: number,
 }
 
+export interface objectHWB
+{
+    h: number,
+    w: number,
+    b: number,
+}
 
 
 export interface objectLab

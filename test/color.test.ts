@@ -68,14 +68,11 @@ describe("Lab", () =>
         expect(colorLab.b).toBe(217)
         // 之所以，Lab 到 sRGB 转换的值和 Photoshop 转换的不一样，因为用的不是同一个白点转换算法
     })
-
-
 })
 
 
 describe("HSV", () =>
 {
-
     test("sRGB => HSV ", () =>
     {
         let color = new EssenceColor({r: 216, g: 123, b: 110})
@@ -93,7 +90,31 @@ describe("HSV", () =>
         expect(colorRGB.g).toBe(96)
         expect(colorRGB.b).toBe(214)
     })
-
-
 })
+
+
+
+describe("HWB", () =>
+{
+    test("HWB => sRGB", () =>
+    {
+        let color = new EssenceColor({h: 33, w: 44, b: 52})
+        let colorRGB = color.getRGB()
+        expect(colorRGB.r).toBe(122)
+        expect(colorRGB.g).toBe(118)
+        expect(colorRGB.b).toBe(112)
+    })
+
+    test("sRGB => HWB", () =>
+    {
+        let color = new EssenceColor({r: 124, g: 191, b: 255})
+        let colorHWB = color.getHWB() //	hwb(209, 49%, 0%)
+        expect(colorHWB.h).toBe(209)
+        expect(colorHWB.w).toBe(49)
+        expect(colorHWB.b).toBe(0)
+    })
+})
+
+
+
 

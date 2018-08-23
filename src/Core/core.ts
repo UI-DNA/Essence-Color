@@ -6,6 +6,7 @@ import ColorModel_Lab from "@/Core/ColorModels/ColorModel.Lab";
 import ColorSpace_sRGB from "@/Core/ColorSpace/ColorSpace.sRGB";
 import RGB_to_HSL from "@/Core/Converters/RGB_to_HSL";
 import ColorModel_HSV from "@/Core/ColorModels/ColorModel.HSV";
+import ColorModel_HWB from "@/Core/ColorModels/ColorModel.HWB";
 
 
 let ColorModeles = {
@@ -13,6 +14,7 @@ let ColorModeles = {
     HSL: ColorModel_HSL,
     RGB: ColorModel_RGB,
     Lab: ColorModel_Lab,
+    HWB: ColorModel_HWB,
 }
 
 
@@ -28,7 +30,7 @@ class EssenceColor
     static DirectConverters = {RGB_to_HSL}
 
     // 支持的色彩模型列表
-    static ColorModeleList = [ColorModel_RGB, ColorModel_HSL, ColorModel_HSV, ColorModel_Lab]
+    static ColorModeleList = [ColorModel_RGB, ColorModel_HSL, ColorModel_HSV, ColorModel_Lab, ColorModel_HWB]
 
 
     public r?: number;
@@ -40,6 +42,7 @@ class EssenceColor
     public s?: number;
     public h?: number;
     public v?: number;
+    public w?: number;
     public alpha?: number;
 
     constructor(input: any)
@@ -246,6 +249,13 @@ class EssenceColor
         let color = this._getColorByModel(ColorModel_HSV);
         return color
     }
+
+    public getHWB(): EssenceColor
+    {
+        let color = this._getColorByModel(ColorModel_HWB);
+        return color
+    }
+
 
     static ESSENCE_COLOR = 1
 }

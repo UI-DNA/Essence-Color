@@ -6,6 +6,7 @@
 interface ColorModel {
     outputColor: (color: any) => any;
     inputColor: (color: any, input: any) => any;
+    isMatchedColor: (input: any) => boolean;
     /**
      * 从 RGB 转换到此色彩模型，把此色彩模型的属性写入指定对象
      * @param color 用来保存色彩属性的对象
