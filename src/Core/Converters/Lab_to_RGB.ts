@@ -17,16 +17,21 @@ import XYZArray_to_RGBArray from "@/Core/Converters/XYZArray_to_RGBArray";
  * @param out
  * @constructor
  */
-function Lab_to_RGB(lab: objectLab, colorSpace: ColorSpace = ColorSpace_sRGB, out?: any): objectRGB {
+function Lab_to_RGB(lab: objectLab, colorSpace: ColorSpace = ColorSpace_sRGB, out?: any): objectRGB
+{
     if (out === undefined) out = {};
     // Lab to XYZ
     let XYZ = Lab_to_XYZArray(lab);
 
     //White to Target from Lab D50
-    if (colorSpace.WHITE_POINT !== ReferenceWhite.D50) {
-        if (colorSpace.WHITE_POINT === ReferenceWhite.D65) {
+    if (colorSpace.WHITE_POINT !== ReferenceWhite.D50)
+    {
+        if (colorSpace.WHITE_POINT === ReferenceWhite.D65)
+        {
             XYZ = <arrayXYZ>util.matrixMultiply_33x30(ReferenceAdaptatioMatrixn.D50_to_D65, XYZ)
-        } else {
+        }
+        else
+        {
             let adaptatioMat = get_Bradford_AdaptatioMatrixn(colorSpace.WHITE_POINT, ReferenceWhite.D50);
             XYZ = <arrayXYZ>util.matrixMultiply_33x30(adaptatioMat, XYZ)
         }
@@ -36,10 +41,10 @@ function Lab_to_RGB(lab: objectLab, colorSpace: ColorSpace = ColorSpace_sRGB, ou
     let RGBArray = XYZArray_to_RGBArray(XYZ, colorSpace.XYZ2RGB_MATRIX);
 
     // Gamma 变换，把色彩值的转化为适应人眼的
-    out.r = colorSpace.enGamma(RGBArray[0]);
-    out.g = colorSpace.deGamma(RGBArray[1]);
-    out.b = colorSpace.deGamma(RGBArray[2]);
 
+    out.r = util.normalInt256(colorSpace.enGamma(RGBArray[0]) * 255)
+    out.g = util.normalInt256(colorSpace.enGamma(RGBArray[1]) * 255)
+    out.b = util.normalInt256(colorSpace.enGamma(RGBArray[2]) * 255)
 
     return out
 }
