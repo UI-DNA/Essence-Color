@@ -1,7 +1,6 @@
 import EssenceColor from "./../src/index"
 
 
-
 test("new EssenceColor", () =>
 {
 
@@ -93,7 +92,6 @@ describe("HSV", () =>
 })
 
 
-
 describe("HWB", () =>
 {
     test("HWB => sRGB", () =>
@@ -116,5 +114,24 @@ describe("HWB", () =>
 })
 
 
+describe("XYZ", () =>
+{
+    test("XYZ => sRGB", () =>
+    {
+        let color = new EssenceColor({x: 0.53, y: 0.34, z: 0.28})
+        let colorRGB = color.getRGB()
+        expect(colorRGB.r).toBe(255)
+        expect(colorRGB.g).toBe(103)
+        expect(colorRGB.b).toBe(138)
+    })
 
+    test("sRGB => XYZ", () =>
+    {
+        let color = new EssenceColor({r: 255, g: 34, b: 68})
+        let colorXYZ = color.getXYZ()
+        expect(+(<number>colorXYZ.x).toFixed(5)).toBe(0.42861)
+        expect(+(<number>colorXYZ.y).toFixed(5)).toBe(0.22828)
+        expect(+(<number>colorXYZ.z).toFixed(5)).toBe(0.07617)
+    })
+})
 

@@ -63,6 +63,14 @@ export interface objectLab
     b: number,
 }
 
+export interface objectXYZ
+{
+    X: number,
+    Y: number,
+    Z: number,
+}
+
+
 
 
 export type arrayRGB = [byteNumber1, byteNumber1, byteNumber1]

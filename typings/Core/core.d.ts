@@ -1,11 +1,12 @@
 import ColorModel from "./ColorModels/ColorModel";
 import RGB_to_HSL from "@/Core/Converters/RGB_to_HSL";
+import ColorSpace from "@/Core/ColorSpace/ColorSpace";
 /**
  * 色彩表示与存储类
  */
 declare class EssenceColor {
     colorModel?: ColorModel;
-    colorSpace?: ColorModel;
+    colorSpace?: ColorSpace;
     static DirectConverters: {
         RGB_to_HSL: typeof RGB_to_HSL;
     };
@@ -20,6 +21,9 @@ declare class EssenceColor {
     h?: number;
     v?: number;
     w?: number;
+    x?: number;
+    y?: number;
+    z?: number;
     alpha?: number;
     constructor(input: any);
     /**
@@ -50,6 +54,7 @@ declare class EssenceColor {
     getLab(): EssenceColor;
     getHSV(): EssenceColor;
     getHWB(): EssenceColor;
+    getXYZ(): EssenceColor;
     static ESSENCE_COLOR: number;
 }
 export default EssenceColor;

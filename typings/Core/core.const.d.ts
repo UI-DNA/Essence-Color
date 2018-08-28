@@ -40,6 +40,11 @@ export interface objectLab {
     a: number;
     b: number;
 }
+export interface objectXYZ {
+    X: number;
+    Y: number;
+    Z: number;
+}
 export declare type arrayRGB = [byteNumber1, byteNumber1, byteNumber1];
 export declare type arrayXYZ = [number, number, number];
 export declare let ColorSpaceList: ColorSpace[];
